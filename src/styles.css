@@ -106,5 +106,5 @@
 
 .hero-photo { object-position: center; }
 @media (max-width: 767px) {
-  .hero-photo { top: auto; height: 320px; object-position: right center; }
+  .hero-photo { top: auto; height: 280px; object-position: right center; }
 }

@@ -6,7 +6,7 @@ import { WhatsappButton } from "./WhatsappButton";
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative isolate flex min-h-[760px] items-start overflow-hidden bg-surface pb-80 pt-28 md:min-h-[640px] md:items-center md:pb-16 md:pt-28">
+    <section id="inicio" className="relative isolate flex min-h-[700px] items-start overflow-hidden bg-surface pb-72 pt-28 md:min-h-[640px] md:items-center md:pb-16 md:pt-28">
       <img
         src={heroImg}
         alt="Imagem ilustrativa de hambúrguer artesanal com cheddar"
