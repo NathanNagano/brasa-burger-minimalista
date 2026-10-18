@@ -14,3 +14,4 @@
 - Menu data lives in src/data/products.ts as a plain Product[] — keeps a future external source (e.g. Google Sheets) a drop-in replacement.
 - No backend/database: static site targeting static hosting.
 - WhatsApp links go through src/lib/whatsapp.ts; an unset number shows a demo notice instead of a fake link.
+- Visual updates reuse the existing site components and shared Button, with palette, typography and shadows in src/styles.css — keeps styling consistent without changing menu data or behavior.
