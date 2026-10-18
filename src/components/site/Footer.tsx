@@ -11,8 +11,8 @@ export function Footer() {
     <footer className="border-t py-12">
       <div className="container-page grid gap-8 md:grid-cols-3 md:items-center">
         <div>
-          <p className="font-display text-2xl text-cream">
-            BRASA<span className="text-primary"> BURGER</span>
+          <p className="font-display text-xl font-extrabold text-foreground">
+            {siteConfig.shortName}<span className="text-primary"> {siteConfig.name.replace(siteConfig.shortName, "").trim()}</span>
           </p>
           <p className="mt-1 text-sm text-muted-foreground">{siteConfig.tagline}</p>
         </div>
@@ -28,7 +28,7 @@ export function Footer() {
         <ul className="flex gap-3 md:justify-end">
           {socials.map(({ label, href, icon: Icon }) => (
             <li key={label}>
-              <a href={href} aria-label={label} className="flex size-10 items-center justify-center rounded-full border text-cream/80 transition-colors hover:border-primary hover:text-primary">
+              <a href={href} aria-label={label} className="flex size-10 items-center justify-center rounded-md border text-cream/80 transition-colors hover:border-primary hover:text-primary">
                 <Icon className="size-4" aria-hidden />
               </a>
             </li>

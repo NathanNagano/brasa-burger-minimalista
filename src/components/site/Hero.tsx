@@ -1,34 +1,34 @@
-import heroImg from "@/assets/hero-burger.jpg";
+import heroImg from "@/assets/hero-burger-light.jpg";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 import { WhatsappButton } from "./WhatsappButton";
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative isolate flex min-h-[92svh] items-end overflow-hidden pb-16 pt-28 md:items-center md:pb-0">
+    <section id="inicio" className="relative isolate flex min-h-[700px] items-start overflow-hidden bg-surface pb-72 pt-28 md:min-h-[640px] md:items-center md:pb-16 md:pt-28">
       <img
         src={heroImg}
-        alt="Imagem ilustrativa de hambúrguer com cheddar derretido sobre brasa"
-        width={1600}
-        height={1008}
+        alt="Imagem ilustrativa de hambúrguer artesanal com cheddar"
+        width={1264}
+        height={848}
         fetchPriority="high"
-        className="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center]"
+        className="hero-photo absolute inset-0 -z-20 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 -z-10 bg-hero-fade" aria-hidden />
       <div className="container-page">
-        <div className="max-w-xl animate-rise">
+        <div className="max-w-lg animate-rise md:max-w-[46%]">
           <p className="eyebrow mb-4">Hamburgueria artesanal</p>
-          <h1 className="text-5xl leading-[0.95] text-cream sm:text-6xl md:text-7xl lg:text-8xl">
-            O sabor que <span className="text-fire">acende</span> sua fome
+          <h1 className="text-5xl font-semibold leading-[1.1] text-foreground sm:text-6xl lg:text-7xl">
+            {siteConfig.shortName}<br /><span className="text-primary">{siteConfig.name.replace(siteConfig.shortName, "").trim()}</span>
           </h1>
-          <p className="mt-6 max-w-md text-base text-cream/75 md:text-lg">
+          <p className="mt-5 text-lg font-medium text-foreground">O sabor que acende sua fome.</p>
+          <p className="mt-3 max-w-sm text-sm text-muted-foreground md:text-base">
             Burgers na chapa bem quente, ingredientes escolhidos a dedo e aquele ponto de brasa que faz voltar.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-start">
-            <a
-              href="#cardapio"
-              className="inline-flex items-center justify-center rounded-lg bg-fire px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
-            >
-              Explorar cardápio
-            </a>
+          <div className="mt-7 flex flex-col gap-3 sm:items-start">
+            <Button asChild className="h-12 px-6 shadow-none">
+              <a href="#cardapio">Explorar cardápio <ArrowUpRight aria-hidden /></a>
+            </Button>
             <WhatsappButton />
           </div>
         </div>

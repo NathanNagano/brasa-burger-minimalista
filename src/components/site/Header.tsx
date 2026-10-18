@@ -2,6 +2,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,18 +19,18 @@ export function Header() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
-        scrolled || open ? "border-b bg-background/90 backdrop-blur-md" : "bg-transparent",
+        scrolled || open ? "border-b bg-background/95 backdrop-blur-md" : "border-b border-transparent bg-background/90",
       )}
     >
-      <div className="container-page flex h-16 items-center justify-between gap-4 md:h-20">
-        <a href="#inicio" className="font-display text-2xl tracking-wide text-cream" aria-label={`${siteConfig.name} — início`}>
-          BRASA<span className="text-primary"> BURGER</span>
+      <div className="container-page grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-4 md:flex md:h-20 md:justify-between">
+        <a href="#inicio" className="min-w-0 truncate font-display text-lg font-extrabold text-foreground md:text-xl" aria-label={`${siteConfig.name} — início`}>
+          {siteConfig.shortName}<span className="text-primary"> {siteConfig.name.replace(siteConfig.shortName, "").trim()}</span>
         </a>
         <nav aria-label="Principal" className="hidden md:block">
           <ul className="flex items-center gap-8">
             {siteConfig.nav.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="text-sm font-semibold text-cream/80 transition-colors hover:text-primary">
+                <a href={item.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
                   {item.label}
                 </a>
               </li>
@@ -37,21 +38,17 @@ export function Header() {
           </ul>
         </nav>
         <div className="flex items-center gap-2">
-          <a
-            href="#cardapio"
-            className="hidden rounded-lg bg-primary px-5 py-2.5 text-sm font-bold uppercase tracking-wider text-primary-foreground transition-transform hover:-translate-y-0.5 sm:inline-flex"
-          >
-            Ver cardápio
-          </a>
-          <button
+          <Button asChild className="hidden h-11 px-5 shadow-none sm:inline-flex"><a href="#cardapio">Ver cardápio</a></Button>
+          <Button
+            variant="ghost" size="icon"
             type="button"
-            className="inline-flex size-10 items-center justify-center rounded-lg text-cream md:hidden"
+            className="inline-flex size-11 shrink-0 text-foreground md:hidden"
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="size-6" /> : <Menu className="size-6" />}
-          </button>
+          </Button>
         </div>
       </div>
       {open && (
@@ -59,15 +56,15 @@ export function Header() {
           <ul className="flex flex-col gap-1">
             {siteConfig.nav.map((item) => (
               <li key={item.href}>
-                <a href={item.href} onClick={() => setOpen(false)} className="block rounded-lg px-2 py-3 font-semibold text-cream hover:bg-surface">
+                <a href={item.href} onClick={() => setOpen(false)} className="block rounded-md px-2 py-3 font-medium text-foreground hover:bg-surface">
                   {item.label}
                 </a>
               </li>
             ))}
             <li>
-              <a href="#cardapio" onClick={() => setOpen(false)} className="mt-2 block rounded-lg bg-primary px-4 py-3 text-center font-bold uppercase text-primary-foreground">
+              <Button asChild className="mt-2 h-12 w-full shadow-none"><a href="#cardapio" onClick={() => setOpen(false)}>
                 Ver cardápio
-              </a>
+              </a></Button>
             </li>
           </ul>
         </nav>
